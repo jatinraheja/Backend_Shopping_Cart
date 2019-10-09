@@ -1,7 +1,9 @@
 package com.casestudy.eCart.controller;
-
 import com.casestudy.eCart.Modal.Items;
+import com.casestudy.eCart.Modal.User;
+import com.casestudy.eCart.Modal.Users;
 import com.casestudy.eCart.exception.ResourceNotFoundException;
+import com.casestudy.eCart.repository.UserRepository;
 import com.casestudy.eCart.repository.itemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,16 +12,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class ItemsController {
     @Autowired
     itemRepository itemrepository;
+    UserRepository userRepository;
     @GetMapping("/items")
     public List<Items> getAllNotes() {
         return itemrepository.findAll();
     }
+
     @GetMapping("/items/{id}")
     public Items getItembyId(@PathVariable(value = "id") Long id)
     {
@@ -34,6 +38,18 @@ public class ItemsController {
     public Items createNote(@Valid @RequestBody Items item) {
         return itemrepository.save(item);
     }
+
+//    @GetMapping(produces = "application/json")
+    @GetMapping("/getuser")
+    public List<Users> getSuccess()
+    {
+        return userRepository.findAll();
+    }
+//    @GetMapping("/validate/validateLogin" )
+//    public String validateLogin() {
+//        return new Users("User successfully authenticated");
+//    }
+
 //    @GetMapping("/notes/{id}")
 //    public Items getNoteById(@PathVariable(value = "id") Long noteId) {
 //        return itemRepository.findById(noteId)
