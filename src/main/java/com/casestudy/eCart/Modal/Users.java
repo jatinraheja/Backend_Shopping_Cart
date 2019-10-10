@@ -13,6 +13,10 @@ public class Users {
     private int active;
     private String authentication;
     private String status;
+    public Users()
+    {
+
+    }
    public  Users(String str)
     {
         this.status = str;

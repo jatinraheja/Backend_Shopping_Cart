@@ -18,7 +18,7 @@ import java.util.List;
 public class ItemsController {
     @Autowired
     itemRepository itemrepository;
-    UserRepository userRepository;
+
     @GetMapping("/items")
     public List<Items> getAllNotes() {
         return itemrepository.findAll();
@@ -29,7 +29,7 @@ public class ItemsController {
     {
        return itemrepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("item","Id",id));
     }
-    @GetMapping("/items/category/{cat}")
+    @GetMapping("/items/cat/{cat}")
     public List<Items> getItembyCategory(@PathVariable(value = "cat") String cat)
     {
         return itemrepository.findAllByCategory(cat);
@@ -38,13 +38,17 @@ public class ItemsController {
     public Items createNote(@Valid @RequestBody Items item) {
         return itemrepository.save(item);
     }
-
-//    @GetMapping(produces = "application/json")
-    @GetMapping("/getuser")
-    public List<Users> getSuccess()
+    @GetMapping("/items/{price1/{pric2}")
+    public List<Items> getItembyPrice(@PathVariable(value = "price1") Double price1,@PathVariable(value = "price2") Double price2)
     {
-        return userRepository.findAll();
+        return itemrepository.findByPriceBetween(price1,price2);
     }
+//    @GetMapping(produces = "application/json")
+//    @GetMapping("/getuser")
+//    public List<Users> getSuccess()
+//    {
+//        return userRepository.findAll();
+//    }
 //    @GetMapping("/validate/validateLogin" )
 //    public String validateLogin() {
 //        return new Users("User successfully authenticated");
