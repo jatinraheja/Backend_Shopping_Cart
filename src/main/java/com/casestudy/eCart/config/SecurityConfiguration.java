@@ -37,6 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers(HttpMethod.OPTIONS , "/**").permitAll()
             .antMatchers("/signup").permitAll()
                 .antMatchers("/signup/savedata").permitAll()
+                .antMatchers("/user/CreateRow").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic();
         http.cors();
