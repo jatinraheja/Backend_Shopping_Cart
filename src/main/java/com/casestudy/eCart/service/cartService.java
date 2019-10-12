@@ -6,12 +6,13 @@ import com.casestudy.eCart.Modal.cart;
 import com.casestudy.eCart.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.transaction.Transactional;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Optional;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @Service
 public class cartService {
     @Autowired
@@ -73,10 +74,10 @@ public class cartService {
             {
                 cartObj.setQuantity(cartObj.getQuantity() + value);
                 cartrepository.save(cartObj);
-                return "\"Successfull\"";
+                return "Successful";
             }
         }
-        return "\"UnSuccessfull\"";
+        return "Unsuccessful";
     }
     public String decrement(int value, Long productId ,Principal principal )
     {
@@ -89,10 +90,10 @@ public class cartService {
             {
                 cartObj.setQuantity(cartObj.getQuantity() - value);
                 cartrepository.save(cartObj);
-                return "\"Successfull\"";
+                return "Successfull";
             }
         }
-        return "\"unsuccessfull\"";
+        return "Unsuccessfull";
     }
 
 
