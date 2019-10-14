@@ -1,12 +1,14 @@
 package com.casestudy.eCart.controller;
 
 import com.casestudy.eCart.Modal.cart;
+import com.casestudy.eCart.Modal.orderHistory;
 import com.casestudy.eCart.service.cartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -16,6 +18,11 @@ public class CartController {
     @Autowired
     cartService cartService;
 
+//    @GetMapping("/{id}")
+//    public ArrayList<cart> getcartbyid(@PathVariable("id") Long id)
+//    {
+//        return cartService.findbyid(id);
+//    }
     @GetMapping("/allcart")
     public ArrayList<cart> getCart(Principal principal) {return cartService.getEmail(principal);}
 
@@ -39,6 +46,12 @@ public class CartController {
                             @PathVariable("productId") Long productId, Principal principal) {
         return cartService.decrement(value,productId,principal);
 
+    }
+    @GetMapping(value = "/checkout", produces = "application/json")
+   @ResponseBody
+    public List<orderHistory> checkoutFromCart(Principal principal)
+    {
+        return cartService.checkOut(principal);
     }
 
 

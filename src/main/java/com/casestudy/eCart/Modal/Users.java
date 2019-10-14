@@ -17,7 +17,7 @@ public class Users {
     {
 
     }
-   public  Users(String str)
+    public  Users(String str)
     {
         this.status = str;
     }
