@@ -83,10 +83,10 @@ public class cartService {
             {
                 cartObj.setQuantity(cartObj.getQuantity() + value);
                 cartrepository.save(cartObj);
-                return "Successful";
+                return "\"Successful\"";
             }
         }
-        return "Unsuccessful";
+        return "\"Unsuccessful\"";
     }
     public String decrement(int value, Long productId ,Principal principal )
     {
@@ -99,10 +99,10 @@ public class cartService {
             {
                 cartObj.setQuantity(cartObj.getQuantity() - value);
                 cartrepository.save(cartObj);
-                return "Successfull";
+                return "\"Successfull\"";
             }
         }
-        return "Unsuccessfull";
+        return "\"Unsuccessfull\"";
     }
     public List<orderHistory> checkOut(Principal principal)
     {

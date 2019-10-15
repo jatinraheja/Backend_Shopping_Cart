@@ -38,7 +38,7 @@ public class ItemsController {
     public Items createNote(@Valid @RequestBody Items item) {
         return itemrepository.save(item);
     }
-    @GetMapping("/items/{price1/{pric2}")
+    @GetMapping("/items/{price1}/{price2}")
     public List<Items> getItembyPrice(@PathVariable(value = "price1") Double price1,@PathVariable(value = "price2") Double price2)
     {
         return itemrepository.findByPriceBetween(price1,price2);
