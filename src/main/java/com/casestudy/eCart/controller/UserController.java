@@ -2,6 +2,7 @@ package com.casestudy.eCart.controller;
 
 import com.casestudy.eCart.Modal.Users;
 import com.casestudy.eCart.Modal.cart;
+import com.casestudy.eCart.exception.ResourceNotFoundException;
 import com.casestudy.eCart.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,4 +32,14 @@ public class UserController {
     }
     @GetMapping("/users")
     public Optional<Users> getUser(Principal principal) {return usr.findByEmail(principal.getName());}
+    @PutMapping("/updateuser/{id}")
+    public Users updateUser(@PathVariable(value = "id") Long userid, @Valid @RequestBody Users newusr)
+    {
+        Users user = usr.findById(userid).orElseThrow(()-> new ResourceNotFoundException("Users","user-id",userid));
+        user.setEmail(newusr.getEmail());
+        user.setPassword(newusr.getPassword());
+        Users updateditem = usr.save(user);
+        return updateditem;
+
+    }
 }

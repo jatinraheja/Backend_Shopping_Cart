@@ -5,6 +5,7 @@ import com.casestudy.eCart.Modal.Users;
 import com.casestudy.eCart.exception.ResourceNotFoundException;
 import com.casestudy.eCart.repository.UserRepository;
 import com.casestudy.eCart.repository.itemRepository;
+import com.casestudy.eCart.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,8 @@ import java.util.List;
 public class ItemsController {
     @Autowired
     itemRepository itemrepository;
-
+    @Autowired
+     ItemService itemService;
     @GetMapping("/items")
     public List<Items> getAllNotes() {
         return itemrepository.findAll();
@@ -43,9 +45,15 @@ public class ItemsController {
     {
         return itemrepository.findByPriceBetween(price1,price2);
     }
+    @PutMapping("/edititem/{id}")
+     public Items editItems( @RequestBody Items items, @PathVariable(value = "id") Long id)
+    {
+            return itemService.editItem(items,id);
+    }
 //    @GetMapping(produces = "application/json")
 //    @GetMapping("/getuser")
 //    public List<Users> getSuccess()
+
 //    {
 //        return userRepository.findAll();
 //    }

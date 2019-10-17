@@ -11,13 +11,13 @@ import java.io.Serializable;
 public class Items implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long productid;
+    private Long productid;
 
-    public long getProductid() {
+    public Long getProductid() {
         return productid;
     }
 
-    public void setProductid(long productid) {
+    public void setProductid(Long productid) {
         this.productid = productid;
     }
 

@@ -10,9 +10,20 @@ public class Users {
     private Long Id;
     private String email;
     private String password;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     private int active;
     private String authentication;
     private String status;
+    private String username;
+
     public Users()
     {
 
