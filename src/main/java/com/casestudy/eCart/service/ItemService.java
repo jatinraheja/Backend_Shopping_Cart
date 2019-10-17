@@ -13,11 +13,11 @@ public class ItemService {
     {
 
     }
-    public boolean addProduct(Items items)
-    {
-        itemRepository.save(items);
-        return true;
-    }
+//    public boolean addProduct(Items items)
+//    {
+//        itemRepository.save(items);
+//        return true;
+//    }
     public Items editItem(Items newitem,Long id)
     {
         Items olditem = itemRepository.findById(id).get();

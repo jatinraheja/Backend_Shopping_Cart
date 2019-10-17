@@ -11,6 +11,24 @@ public class Users {
     private String email;
     private String password;
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Long getContact() {
+        return contact;
+    }
+
+    public void setContact(Long contact) {
+        this.contact = contact;
+    }
+
+    private String gender;
+    private Long contact;
     public String getUsername() {
         return username;
     }
