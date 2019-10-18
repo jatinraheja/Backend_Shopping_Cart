@@ -32,12 +32,14 @@ public class UserController {
     }
     @GetMapping("/users")
     public Optional<Users> getUser(Principal principal) {return usr.findByEmail(principal.getName());}
-    @PutMapping("/updateuser/{id}")
-    public Users updateUser(@PathVariable(value = "id") Long userid, @Valid @RequestBody Users newusr)
+    @PutMapping("/updateuser/{email}")
+    public Users updateUser(@PathVariable(value = "id") Long id, @RequestBody Users newusr)
     {
-        Users user = usr.findById(userid).orElseThrow(()-> new ResourceNotFoundException("Users","user-id",userid));
+        Users user = usr.findById(id).orElseThrow(()-> new ResourceNotFoundException("Users","user-id",id));
         user.setEmail(newusr.getEmail());
         user.setPassword(newusr.getPassword());
+        user.setContact(newusr.getContact());
+        user.setGender(newusr.getGender());
         Users updateditem = usr.save(user);
         return updateditem;
 
