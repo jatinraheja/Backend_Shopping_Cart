@@ -32,7 +32,7 @@ public class UserController {
     }
     @GetMapping("/users")
     public Optional<Users> getUser(Principal principal) {return usr.findByEmail(principal.getName());}
-    @PutMapping("/updateuser/{email}")
+    @PutMapping("/updateuser/{id}")
     public Users updateUser(@PathVariable(value = "id") Long id, @RequestBody Users newusr)
     {
         Users user = usr.findById(id).orElseThrow(()-> new ResourceNotFoundException("Users","user-id",id));

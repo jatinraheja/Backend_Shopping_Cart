@@ -45,6 +45,11 @@ public class ItemsController {
     {
         return itemrepository.findByPriceBetween(price1,price2);
     }
+    @GetMapping("/items/brand/{brand}")
+    public List<Items> getItembyBrand(@PathVariable(value = "brand") String brand)
+    {
+        return itemrepository.findAllByBrand(brand);
+    }
     @PutMapping("/edititem/{id}")
      public Items editItems( @RequestBody Items items, @PathVariable(value = "id") Long id)
     {

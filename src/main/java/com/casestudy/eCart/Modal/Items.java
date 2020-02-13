@@ -83,6 +83,16 @@ public class Items implements Serializable {
     private String image;
     private String category;
     private String subcategory;
+    private String brand;
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
     @Column(nullable = false, columnDefinition = "int default '1'")
     private int active;
     @Embedded

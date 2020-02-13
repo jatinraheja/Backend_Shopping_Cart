@@ -38,6 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/signup").permitAll()
                 .antMatchers("/signup/savedata").permitAll()
                 .antMatchers("/user/CreateRow").permitAll()
+                .antMatchers("/updateuser/{id}").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic();
         http.cors();

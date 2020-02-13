@@ -16,6 +16,6 @@ public interface itemRepository extends JpaRepository<Items, Long> {
     List<Items> findAllByCategory(String category);
 
     List<Items> findByPriceBetween(Double price1, Double price2);
-
+    List<Items> findAllByBrand(String brand);
 
 }
